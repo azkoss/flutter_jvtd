@@ -24,6 +24,7 @@ dependencies:
   # https://pub.dartlang.org/packages/dio
   # Dart的一个强大的Http客户端，支持拦截器、全局配置、FormData、请求取消、文件下载、超时等。
   dio: ^2.0.7
+  mime: ^0.9.6+2
 
   # https://pub.dartlang.org/packages/fluttertoast
   # Android及iOS toast控件 用于提示信息
@@ -106,8 +107,8 @@ dev_dependencies:
 flutter:
 
   # To add assets to your package, add an assets section, like this:
-  # assets:
-  #  - images/a_dot_burr.jpeg
+  assets:
+    - assets/
   #  - images/a_dot_ham.jpeg
   #
   # For details regarding assets in packages, see
