@@ -24,7 +24,7 @@ Future<com.Response> request(String tag, com.Options options) async {
           data: options.params,
           cancelToken: options.cancelToken.data,
           options: dioOptions,
-          onProgress: options.onProgress);
+          onReceiveProgress: options.onProgress);
     } else if (options.method == com.HttpMethod.upload) {
       onConvert(value) {
         if (value is File) {
@@ -103,13 +103,13 @@ dio.Options _onConfigOptions(String tag, com.Options options) {
   if (options.responseType != null) {
     switch (options.responseType) {
       case com.ResponseType.json:
-        dioOptions.responseType = dio.ResponseType.JSON;
+        dioOptions.responseType = dio.ResponseType.json;
         break;
       case com.ResponseType.stream:
-        dioOptions.responseType = dio.ResponseType.STREAM;
+        dioOptions.responseType = dio.ResponseType.stream;
         break;
       case com.ResponseType.plain:
-        dioOptions.responseType = dio.ResponseType.PLAIN;
+        dioOptions.responseType = dio.ResponseType.plain;
         break;
     }
   }

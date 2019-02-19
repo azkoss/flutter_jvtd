@@ -10,7 +10,7 @@ export 'utils/utils.dart';
 export 'redux/redux.dart';
 export 'app/application.dart';
 export 'router/jvtd_router.dart';
-export 'package:flutter_jvtd_http/flutter_jvtd_http.dart';
+export 'http/flutter_jvtd_http.dart';
 
 //第三方库
 export 'package:flutter_statusbar_manager/flutter_statusbar_manager.dart';
@@ -19,7 +19,6 @@ export 'package:flutter_redux/flutter_redux.dart';
 export 'package:redux/redux.dart';
 export 'package:flutter_spinkit/flutter_spinkit.dart';
 export 'package:pull_to_refresh/pull_to_refresh.dart';
-export 'package:flutter_jvtd_http/flutter_jvtd_http.dart';
 export 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 export 'package:keyboard_actions/keyboard_actions.dart';
 export 'package:webview_flutter/webview_flutter.dart';
