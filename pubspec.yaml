@@ -1,8 +1,8 @@
 name: flutter_jvtd
 description: flutter基础框架
-version: 0.0.1
-author:
-homepage:
+version: 0.0.2
+author: 陈磊
+homepage: https://github.com/q200892907/flutter_jvtd.git
 
 environment:
   sdk: ">=2.1.0 <3.0.0"
@@ -14,6 +14,11 @@ dependencies:
   # 国际化
   flutter_localizations:
     sdk: flutter
+
+  flutter_jvtd_dialog:
+    git:
+      url: 'https://github.com/q200892907/flutter_jvtd_dialog.git'
+      ref: 0.0.1
 
   # 解决pasteButtonLabel == null bug
   flutter_cupertino_localizations: any

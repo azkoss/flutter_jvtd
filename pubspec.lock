@@ -64,13 +64,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "2.1.1"
-  cookie_jar:
-    dependency: transitive
-    description:
-      name: cookie_jar
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.0.0"
   crypto:
     dependency: transitive
     description:
@@ -92,13 +85,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.1.2"
-  dio:
-    dependency: "direct main"
-    description:
-      name: dio
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "2.0.7"
   event_bus:
     dependency: "direct main"
     description:
@@ -139,6 +125,15 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.9.4"
+  flutter_jvtd_dialog:
+    dependency: "direct main"
+    description:
+      path: "."
+      ref: "0.0.1"
+      resolved-ref: c28d27243f22eb371930c00aed4d882f5a8fa37b
+      url: "https://github.com/q200892907/flutter_jvtd_dialog.git"
+    source: git
+    version: "0.0.1"
   flutter_localizations:
     dependency: "direct main"
     description: flutter
@@ -268,13 +263,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.1.6"
-  mime:
-    dependency: "direct main"
-    description:
-      name: mime
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "0.9.6+2"
   path:
     dependency: transitive
     description:

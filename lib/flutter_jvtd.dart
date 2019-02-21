@@ -26,3 +26,4 @@ export 'package:lpinyin/lpinyin.dart';
 export 'package:azlistview/azlistview.dart';
 export 'package:flutter_html/flutter_html.dart';
 export 'package:flutter_cupertino_localizations/flutter_cupertino_localizations.dart';
+export 'package:flutter_jvtd_dialog/flutter_jvtd_dialog.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../base/base_dialog.dart';
+import 'package:flutter_jvtd_dialog/flutter_jvtd_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class JvtdLoadingDialog extends BaseDialog {
