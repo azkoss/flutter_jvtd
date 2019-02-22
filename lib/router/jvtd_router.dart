@@ -55,3 +55,17 @@ abstract class JvtdRoutes {
   @protected
   List<RouterDefine> obtainRoutes();
 }
+
+//Map to paramsString
+String mapToRouteParams(Map<String, String> map) {
+  String paramsStr = '';
+  for (int i = 0; i < map.length; i++) {
+    if (i == 0) {
+      paramsStr += '?';
+    } else {
+      paramsStr += "&";
+    }
+    paramsStr = paramsStr + map.keys.elementAt(i) + '=' + map.values.elementAt(i);
+  }
+  return paramsStr;
+}
