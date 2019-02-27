@@ -71,7 +71,7 @@ abstract class BasePageState<T extends StatefulWidget,S extends JvtdState> exten
   //标准appbar 可重写自定义 标题为空则不显示
   Widget appBar(BuildContext context) {
     if (appBarTitle(context) == null) return null;
-    return JvtdAppBar.text(title: appBarTitle(context),backgroundColor: appBarColor,textTheme: TextTheme(title: appBarTextStyle));
+    return JvtdAppBar.text(title: appBarTitle(context),backgroundColor: appBarColor,textTheme: TextTheme(title: appBarTextStyle),iconTheme: IconThemeData(color: appBarTextStyle.color));
   }
 
   Widget _buildBase(BuildContext context) {
