@@ -22,7 +22,7 @@ class DateUtil {
 
   //时间戳转换时间格式
   static long2String({@required int millisecond, String format = YMDHMS, String locale = DATE_LOCALE}) {
-    DateTime dateTime = DateTime.fromMicrosecondsSinceEpoch(millisecond);
+    DateTime dateTime = DateTime.fromMillisecondsSinceEpoch(millisecond);
     DateFormat dateFormat = DateFormat(format, locale);
     return dateFormat.format(dateTime);
   }
