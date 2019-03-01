@@ -129,6 +129,7 @@ abstract class BaseListViewState<M, T extends StatefulWidget> extends State<T> {
   @override
   Widget build(BuildContext context) {
     if (autoRefresh && listData == null) {
+      autoRefresh = false;
       onRefresh();
     }
     return Center(
