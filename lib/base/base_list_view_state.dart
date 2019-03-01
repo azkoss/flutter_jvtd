@@ -3,20 +3,20 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'base_empty_view.dart';
 import 'base_refresh_view.dart';
 
-abstract class BaseListViewState<M,T extends StatefulWidget> extends State<T> {
+abstract class BaseListViewState<M, T extends StatefulWidget> extends State<T> {
   bool isOpenEmpty = true; //是否开启空布局
   bool isEmptyAndHeaderFooter = true; //空布局是否与守卫布局共存
   bool isFirst = true; //是否显示首次loading
   bool isRefresh = true; //是否有下拉刷新
   bool isLoadMore = true; //是否有上拉加载
 
-  bool autoRefresh = true;//第一次自动加载
+  bool autoRefresh = true; //第一次自动加载
 
   bool oldLoadMoreStatus; //老状态
 
   EmptyStatus _emptyStatus;
-  EmptyStatus get emptyStatus => _emptyStatus; //空布局状态
 
+  EmptyStatus get emptyStatus => _emptyStatus; //空布局状态
 
   List<M> listData = <M>[]; //基础数据
 
@@ -46,7 +46,7 @@ abstract class BaseListViewState<M,T extends StatefulWidget> extends State<T> {
 
   //加载更多布局
   @protected
-  BaseRefreshView buildLoadMoreView(BuildContext context, int loadMoreStatus) ;
+  BaseRefreshView buildLoadMoreView(BuildContext context, int loadMoreStatus);
 
   //刷新布局
   @protected
@@ -113,8 +113,7 @@ abstract class BaseListViewState<M,T extends StatefulWidget> extends State<T> {
       return headerWidgets().elementAt(position);
     } else if (position >= _getHeaderCount() + _getListCount()) {
       //尾布局
-      return footerWidgets()
-          .elementAt(position - (_getHeaderCount() + _getListCount()));
+      return footerWidgets().elementAt(position - (_getHeaderCount() + _getListCount()));
     } else {
       if (_isShowEmpty()) {
         return buildEmptyView();
@@ -129,7 +128,7 @@ abstract class BaseListViewState<M,T extends StatefulWidget> extends State<T> {
 
   @override
   Widget build(BuildContext context) {
-    if(autoRefresh && (listData == null || listData.length <= 0)){
+    if (autoRefresh && listData == null) {
       onRefresh();
     }
     return Center(
@@ -145,9 +144,7 @@ abstract class BaseListViewState<M,T extends StatefulWidget> extends State<T> {
           return buildLoadMoreView(context, mode);
         },
         footerConfig: footerConfig(),
-        child: _isShowEmpty() && !isEmptyAndHeaderFooter
-            ? _buildScrollEmptyView()
-            : _buildList(context),
+        child: _isShowEmpty() && !isEmptyAndHeaderFooter ? _buildScrollEmptyView() : _buildList(context),
         onRefresh: _onRefresh,
       ),
     );
@@ -168,7 +165,7 @@ abstract class BaseListViewState<M,T extends StatefulWidget> extends State<T> {
   Future loadMore();
 
   //重新请求
-  void toRefresh(){
+  void toRefresh() {
     setState(() {
       isFirst = true;
       firstState();
