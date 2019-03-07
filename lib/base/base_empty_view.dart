@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-//空布局状态、无、加载、空、错误
+/// 空布局状态、无、加载、空、错误
 enum EmptyStatus { NONE, LOADING, EMPTY, ERROR }
 
 //空布局基类

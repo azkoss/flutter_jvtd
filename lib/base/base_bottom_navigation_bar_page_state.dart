@@ -3,9 +3,9 @@ import 'base_page_state.dart';
 import '../redux/jvtd_state.dart';
 import '../widget/jvtd_image.dart';
 
-//底部导航页面基类
+/// 底部导航页面基类
 abstract class BaseBottomNavigationBarPageState<T extends StatefulWidget, S extends JvtdState> extends BasePageState<T, S> {
-  bool get isAppBar => false;
+  bool get isAppBar => false;//是否显示appbar
 
   PageController pageController; //page左右切换界面
   int pageIndex = 0; //当前页面下标
@@ -18,10 +18,10 @@ abstract class BaseBottomNavigationBarPageState<T extends StatefulWidget, S exte
   BottomNavigationBarType type = BottomNavigationBarType.fixed; //底部导航显示样式
 
   @protected
-  Color selectedColor();
+  Color selectedColor();//选中颜色
 
   @protected
-  Color unSelectedColor();
+  Color unSelectedColor();//未选中颜色
 
   //界面数组 必须重写
   @protected
@@ -111,6 +111,7 @@ abstract class BaseBottomNavigationBarPageState<T extends StatefulWidget, S exte
 
   @override
   void dispose() {
+    pageController?.dispose();
     super.dispose();
   }
 }

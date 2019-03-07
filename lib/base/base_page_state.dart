@@ -8,7 +8,7 @@ import '../widget/jvtd_loading_dialog.dart';
 import '../base/base_empty_view.dart';
 import '../widget/jvtd_app_bar.dart';
 
-//状态管理基础page
+/// 状态管理基础page
 abstract class BasePageState<T extends StatefulWidget,S extends JvtdState> extends State<T> with AutomaticKeepAliveClientMixin<T> {
   bool isStatusBar = true; //是否进行状态栏修改
   StatusBarStyle statusBarStyle = StatusBarStyle.DARK_CONTENT; //状态栏字体颜色

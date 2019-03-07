@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-//加载布局基类
+/// 加载布局基类
 abstract class BaseRefreshView extends StatelessWidget {
   @protected
   int getStatus();//状态

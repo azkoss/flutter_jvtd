@@ -3,6 +3,9 @@ import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'base_empty_view.dart';
 import 'base_refresh_view.dart';
 
+/// listviewstate基类
+///
+/// 主要控制下拉刷新、上拉加载、布局展示及空布局异常布局
 abstract class BaseListViewState<M, T extends StatefulWidget> extends State<T> {
   bool isOpenEmpty = true; //是否开启空布局
   bool isEmptyAndHeaderFooter = true; //空布局是否与守卫布局共存

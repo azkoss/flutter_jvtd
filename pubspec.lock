@@ -283,7 +283,7 @@ packages:
       name: pedantic
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.4.0"
+    version: "1.5.0"
   pull_to_refresh:
     dependency: "direct main"
     description:
@@ -312,6 +312,13 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "0.4.3"
+  simple_rc4:
+    dependency: "direct main"
+    description:
+      name: simple_rc4
+      url: "https://pub.flutter-io.cn"
+    source: hosted
+    version: "0.1.03"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -423,5 +430,5 @@ packages:
     source: hosted
     version: "0.3.3+1"
 sdks:
-  dart: ">=2.1.0 <3.0.0"
+  dart: ">=2.1.1-dev.0.0 <3.0.0"
   flutter: ">=0.11.9 <2.0.0"
