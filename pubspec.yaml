@@ -15,6 +15,8 @@ dependencies:
   flutter_localizations:
     sdk: flutter
 
+  flutter_cupertino_localizations: ^1.0.0
+
   flutter_jvtd_dialog:
     git:
       url: 'https://github.com/q200892907/flutter_jvtd_dialog.git'
