@@ -1,6 +1,6 @@
 library flutter_jvtd;
 
-export 'package:flutter/material.dart';
+export 'package:flutter/material.dart' hide RefreshIndicator, RefreshIndicatorState;
 export 'dart:math';
 export 'dart:convert';
 export 'base/base.dart';
