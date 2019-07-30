@@ -30,11 +30,11 @@ dependencies:
 
   # https://pub.dartlang.org/packages/url_launcher
   # 启动外部浏览器
-  url_launcher: ^4.2.0+3
+  url_launcher: ^5.0.1
 
   # https://pub.dartlang.org/packages/shared_preferences
   # 本地数据缓存 Android（SharedPreferences）/iOS（NSUserDefaults）
-  shared_preferences: ^0.4.3
+  shared_preferences: ^0.4.0
 
   # https://pub.dartlang.org/packages/flutter_statusbar_manager
   # 状态栏管理
@@ -42,7 +42,7 @@ dependencies:
 
   # https://pub.dartlang.org/packages/cached_network_image
   # 网络图片加载及缓存
-  cached_network_image: ^1.1.1
+  cached_network_image: ^0.5.1
 
   # https://pub.dartlang.org/packages/transparent_image
   # 透明图像库
@@ -54,48 +54,48 @@ dependencies:
 
   # https://pub.dartlang.org/packages/connectivity
   # 网络连接
-  connectivity: ^0.3.2
+  connectivity: ^0.4.2
 
   # https://pub.dartlang.org/packages/fluro
   # 路由管理
-  fluro: ^1.5.1
+  fluro: ^1.4.0
 
   # https://pub.dartlang.org/packages/flutter_swiper
   # 无限滚动视图
-  flutter_swiper: ^1.1.6
+  flutter_swiper: ^1.1.4
 
   # 刷新加载
   pull_to_refresh: ^1.5.2
 
   # 键盘管理
-  keyboard_actions: ^2.1.2
+  keyboard_actions: ^1.0.3
 
   # event_bus
-  event_bus: ^1.1.0
+  event_bus: ^1.0.3
 
   # webview
-  webview_flutter: ^0.3.9+2
+  webview_flutter: ^0.3.3+1
 
   # 加载动画库
   flutter_spinkit: ^3.1.0
 
   # 瀑布流
-  flutter_staggered_grid_view: ^0.3.0
+  flutter_staggered_grid_view: ^0.2.7
 
   # 选择器
-  flutter_picker: ^1.0.13
+  flutter_picker: ^1.0.7
 
   # html展示
-  flutter_html: ^0.10.4
+  flutter_html: ^0.9.4
 
   # 拼音
   lpinyin: ^1.0.7
 
   # 悬停索引
-  azlistview: ^0.1.2
+  azlistview: ^0.1.0
 
   # rc4加密
-  simple_rc4: ^0.1.4
+  simple_rc4: ^0.1.3
 
 dev_dependencies:
   flutter_test:

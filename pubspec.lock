@@ -28,7 +28,7 @@ packages:
       name: cached_network_image
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.1.1"
+    version: "0.5.1"
   charcode:
     dependency: transitive
     description:
@@ -49,7 +49,7 @@ packages:
       name: connectivity
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.2"
+    version: "0.4.3+6"
   convert:
     dependency: transitive
     description:
@@ -103,14 +103,14 @@ packages:
       name: flutter_cache_manager
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.1.1"
+    version: "0.2.0+1"
   flutter_html:
     dependency: "direct main"
     description:
       name: flutter_html
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.10.4"
+    version: "0.9.9"
   flutter_jvtd_dialog:
     dependency: "direct main"
     description:
@@ -159,7 +159,7 @@ packages:
       name: flutter_staggered_grid_view
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.3.0"
+    version: "0.2.7"
   flutter_statusbar_manager:
     dependency: "direct main"
     description:
@@ -220,7 +220,7 @@ packages:
       name: keyboard_actions
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.2"
+    version: "1.0.4"
   lpinyin:
     dependency: "direct main"
     description:
@@ -250,12 +250,12 @@ packages:
     source: hosted
     version: "1.6.2"
   path_provider:
-    dependency: "direct main"
+    dependency: transitive
     description:
       name: path_provider
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "0.5.0+1"
+    version: "0.4.1"
   pedantic:
     dependency: transitive
     description:
@@ -310,13 +310,6 @@ packages:
       url: "https://pub.flutter-io.cn"
     source: hosted
     version: "1.5.5"
-  sqflite:
-    dependency: transitive
-    description:
-      name: sqflite
-      url: "https://pub.flutter-io.cn"
-    source: hosted
-    version: "1.1.6+3"
   stack_trace:
     dependency: transitive
     description:
@@ -344,7 +337,7 @@ packages:
       name: synchronized
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.1.0+1"
+    version: "1.5.3+2"
   term_glyph:
     dependency: transitive
     description:
@@ -372,7 +365,7 @@ packages:
       name: transparent_image
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "1.0.0"
+    version: "0.1.0"
   typed_data:
     dependency: transitive
     description:
@@ -386,14 +379,14 @@ packages:
       name: url_launcher
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "4.2.0+3"
+    version: "5.1.1"
   uuid:
     dependency: transitive
     description:
       name: uuid
       url: "https://pub.flutter-io.cn"
     source: hosted
-    version: "2.0.2"
+    version: "1.0.3"
   vector_math:
     dependency: transitive
     description:
@@ -409,5 +402,5 @@ packages:
     source: hosted
     version: "0.3.10+4"
 sdks:
-  dart: ">=2.3.0-dev.0.5.flutter-a1668566e5 <3.0.0"
-  flutter: ">=1.6.0 <2.0.0"
+  dart: ">=2.2.2 <3.0.0"
+  flutter: ">=1.5.0 <2.0.0"
