@@ -46,7 +46,7 @@ dependencies:
 
   # https://pub.dartlang.org/packages/transparent_image
   # 透明图像库
-  transparent_image: ^1.0.0
+  transparent_image: ^0.1.0
 
   # https://pub.flutter-io.cn/packages/flutter_redux
   # 状态管理
