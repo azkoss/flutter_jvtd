@@ -50,11 +50,11 @@ abstract class BaseListViewState<M, T extends StatefulWidget> extends State<T> {
   List<Widget> footerWidgets();
 
   @protected
-  CustomFooter buildLoadMoreView();
+  Widget buildLoadMoreView();
 
   //刷新布局
   @protected
-  CustomHeader buildRefreshView();
+  Widget buildRefreshView();
 
   //初始化空布局
   @protected
