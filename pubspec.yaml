@@ -30,7 +30,7 @@ dependencies:
 
   # https://pub.dartlang.org/packages/url_launcher
   # 启动外部浏览器
-  url_launcher: ^5.1.1
+  url_launcher: ^4.2.0+3
 
   # https://pub.dartlang.org/packages/shared_preferences
   # 本地数据缓存 Android（SharedPreferences）/iOS（NSUserDefaults）
@@ -54,7 +54,7 @@ dependencies:
 
   # https://pub.dartlang.org/packages/connectivity
   # 网络连接
-  connectivity: ^0.4.0
+  connectivity: ^0.3.2
 
   # https://pub.dartlang.org/packages/fluro
   # 路由管理
@@ -74,7 +74,7 @@ dependencies:
   event_bus: ^1.1.0
 
   # webview
-  webview_flutter: ^0.3.10+4
+  webview_flutter: ^0.3.9+2
 
   # 加载动画库
   flutter_spinkit: ^3.1.0
