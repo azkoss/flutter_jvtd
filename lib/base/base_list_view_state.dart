@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 import 'base_empty_view.dart';
-import 'base_refresh_view.dart';
 
 /// listviewstate基类
 ///
@@ -50,19 +49,12 @@ abstract class BaseListViewState<M, T extends StatefulWidget> extends State<T> {
   @protected
   List<Widget> footerWidgets();
 
-  //加载更多布局
   @protected
-  BaseRefreshView buildLoadMoreView(BuildContext context, int loadMoreStatus);
+  CustomFooter buildLoadMoreView();
 
   //刷新布局
   @protected
-  BaseRefreshView buildRefreshView(BuildContext context, int refreshStatus);
-
-  @protected
-  Config headerConfig();
-
-  @protected
-  Config footerConfig();
+  CustomHeader buildRefreshView();
 
   //初始化空布局
   @protected
@@ -135,30 +127,21 @@ abstract class BaseListViewState<M, T extends StatefulWidget> extends State<T> {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: SmartRefresher(
-        controller: _refreshController,
-        enablePullDown: isRefresh,
-        enablePullUp: isLoadMore,
-        headerBuilder: (context, mode) {
-          return buildRefreshView(context, mode);
-        },
-        headerConfig: headerConfig(),
-        footerBuilder: (context, mode) {
-          return buildLoadMoreView(context, mode);
-        },
-        footerConfig: footerConfig(),
-        child: _isShowEmpty() && !isEmptyAndHeaderFooter ? _buildScrollEmptyView() : _buildList(context),
-        onRefresh: _onRefresh,
-      ),
+      child: _buildSmartRefresher(context),
     );
   }
 
-  void _onRefresh(bool up) {
-    if (up) {
-      onRefresh();
-    } else {
-      loadMore();
-    }
+  Widget _buildSmartRefresher(BuildContext context) {
+    return SmartRefresher(
+        controller: _refreshController,
+        enablePullDown: isRefresh,
+        enablePullUp: isLoadMore,
+        header: buildRefreshView(),
+        footer: buildLoadMoreView(),
+        child: _isShowEmpty() && !isEmptyAndHeaderFooter ? _buildScrollEmptyView() : _buildList(context),
+        onRefresh: onRefresh,
+        onLoading: loadMore,
+      );
   }
 
   @protected
@@ -184,7 +167,7 @@ abstract class BaseListViewState<M, T extends StatefulWidget> extends State<T> {
   }
 
   void loadMoreError() {
-    _refreshController.sendBack(false, RefreshStatus.failed);
+    _refreshController.loadFailed();
   }
 
   void loadData({bool refresh = true, List<M> loadData}) {
@@ -199,7 +182,7 @@ abstract class BaseListViewState<M, T extends StatefulWidget> extends State<T> {
           isLoadMore = oldLoadMoreStatus;
         }
         _refreshFinish();
-        _refreshController.sendBack(false, RefreshStatus.idle);
+        _refreshController.refreshToIdle();
       } else {
         listData.addAll(loadData);
         _loadMoreFinish(
@@ -210,16 +193,14 @@ abstract class BaseListViewState<M, T extends StatefulWidget> extends State<T> {
   }
 
   void _refreshFinish() {
-    _refreshController.sendBack(
-      true,
-      RefreshStatus.completed,
-    );
+    _refreshController.refreshCompleted();
   }
 
   void _loadMoreFinish({bool end = false}) {
-    _refreshController.sendBack(
-      false,
-      end ? RefreshStatus.noMore : RefreshStatus.completed,
-    );
+    if(end){
+      _refreshController.loadNoData();
+    }else{
+      _refreshController.loadComplete();
+    }
   }
 }
