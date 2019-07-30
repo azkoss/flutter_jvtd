@@ -60,7 +60,7 @@ abstract class BasePageState<T extends StatefulWidget,S extends JvtdState> exten
   Widget buildBody(BuildContext context);
 
   Widget buildNavigationBar(BuildContext context) {
-    return Container(width: 0,height: 0);
+    return null;
   }
 
   //appbar 标题
@@ -70,7 +70,7 @@ abstract class BasePageState<T extends StatefulWidget,S extends JvtdState> exten
 
   //标准appbar 可重写自定义 标题为空则不显示
   Widget appBar(BuildContext context) {
-    if (appBarTitle(context) == null) return PreferredSize(child: Container(), preferredSize: Size.zero);
+    if (appBarTitle(context) == null) return null;
     return JvtdAppBar.text(title: appBarTitle(context),backgroundColor: appBarColor,textTheme: TextTheme(title: appBarTextStyle),iconTheme: IconThemeData(color: appBarTextStyle.color));
   }
 
@@ -94,7 +94,7 @@ abstract class BasePageState<T extends StatefulWidget,S extends JvtdState> exten
 
   //创建悬浮按钮
   Widget buildFloatingActionButton(BuildContext context) {
-    return Container(width: 0,height: 0);;
+    return null;
   }
 
   //创建空布局
