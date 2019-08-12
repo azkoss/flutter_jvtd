@@ -9,7 +9,7 @@ import '../base/base_empty_view.dart';
 import '../widget/jvtd_app_bar.dart';
 
 /// 状态管理基础page
-abstract class BasePageState<T extends StatefulWidget,S extends JvtdState> extends State<T> with AutomaticKeepAliveClientMixin<T> {
+abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> extends State<T> with AutomaticKeepAliveClientMixin<T> {
   bool isStatusBar = true; //是否进行状态栏修改
   StatusBarStyle statusBarStyle = StatusBarStyle.DARK_CONTENT; //状态栏字体颜色
   Color statusBarColor = Colors.transparent; //状态栏颜色
@@ -60,18 +60,18 @@ abstract class BasePageState<T extends StatefulWidget,S extends JvtdState> exten
   Widget buildBody(BuildContext context);
 
   Widget buildNavigationBar(BuildContext context) {
-    return null;
+    return Container(width: 0, height: 0);
   }
 
   //appbar 标题
   String appBarTitle(BuildContext context) {
-    return null;
+    return "";
   }
 
   //标准appbar 可重写自定义 标题为空则不显示
   Widget appBar(BuildContext context) {
-    if (appBarTitle(context) == null) return null;
-    return JvtdAppBar.text(title: appBarTitle(context),backgroundColor: appBarColor,textTheme: TextTheme(title: appBarTextStyle),iconTheme: IconThemeData(color: appBarTextStyle.color));
+    if (appBarTitle(context).isEmpty || appBarTitle(context) == null) return PreferredSize(child: Container(width: 0, height: 0), preferredSize: Size.zero);
+    return JvtdAppBar.text(title: appBarTitle(context), backgroundColor: appBarColor, textTheme: TextTheme(title: appBarTextStyle), iconTheme: IconThemeData(color: appBarTextStyle.color));
   }
 
   Widget _buildBase(BuildContext context) {
@@ -94,7 +94,7 @@ abstract class BasePageState<T extends StatefulWidget,S extends JvtdState> exten
 
   //创建悬浮按钮
   Widget buildFloatingActionButton(BuildContext context) {
-    return null;
+    return Container(width: 0,height: 0);
   }
 
   //创建空布局

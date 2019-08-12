@@ -92,8 +92,8 @@ class JvtdImage {
     }
     return CachedNetworkImage(
       imageUrl: url,
-      placeholder: placeholder,
-      errorWidget: errorWidget,
+      placeholder: placeholder == null ? Container(width: 0, height: 0) : placeholder,
+      errorWidget: errorWidget == null ? Container(width: 0, height: 0) : errorWidget,
       width: width,
       height: height,
       fit: fit,
