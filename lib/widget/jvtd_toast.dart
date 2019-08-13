@@ -1,5 +1,6 @@
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:flutter/material.dart';
+import 'dart:io';
 
 // toast 工具类
 class JvtdToast {
@@ -21,6 +22,9 @@ class JvtdToast {
     Color textColor = Colors.white,
   }) {
     int iosTime; //iOS显示时长
+    if (Platform.isAndroid) {
+      bgColor = Colors.transparent;
+    }
     if (toast == Toast.LENGTH_SHORT) {
       iosTime = IOS_LENGTH_SHORT;
     } else {
