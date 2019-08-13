@@ -147,7 +147,7 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
       return Future.value(true);
     } else {
       _clickTime = DateTime.now();
-      JvtdToast.showMessage(msg: exitAppTips());
+      JvtdToast.showMessage(msg: exitAppTips(),context: context);
       return Future.value(false);
     }
   }
