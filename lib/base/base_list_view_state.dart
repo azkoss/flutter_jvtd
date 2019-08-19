@@ -36,6 +36,14 @@ abstract class BaseListViewState<M, T extends StatefulWidget> extends State<T> {
     firstState();
   }
 
+  @override
+  void dispose() {
+    super.dispose();
+    if(_refreshController != null){
+      _refreshController.dispose();
+    }
+  }
+
   //首次空布局状态
   void firstState() {
     _emptyStatus = !isFirst ? EmptyStatus.NONE : EmptyStatus.LOADING;
