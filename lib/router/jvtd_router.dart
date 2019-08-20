@@ -39,7 +39,7 @@ class RouterHandler {
           return jvtdUtf8Decode(item);
         }).toList();
       });
-      handlerFunc(context,decodeParameters);
+      return handlerFunc(context,decodeParameters);
     });
   }
 }
