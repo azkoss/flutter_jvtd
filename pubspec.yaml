@@ -88,7 +88,7 @@ dependencies:
   flutter_picker: ^1.0.7
 
   # html展示
-  flutter_html: ^0.9.4
+  flutter_html: ^0.10.4
 
   # 拼音
   lpinyin: ^1.0.7
