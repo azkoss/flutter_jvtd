@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_statusbar_manager/flutter_statusbar_manager.dart';
 import 'package:flutter_redux/flutter_redux.dart';
+import 'package:flutter/services.dart';
 import '../redux/jvtd_state.dart';
 import 'package:redux/redux.dart';
 import '../widget/jvtd_toast.dart';
@@ -10,9 +11,8 @@ import '../widget/jvtd_app_bar.dart';
 
 /// 状态管理基础page
 abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> extends State<T> with AutomaticKeepAliveClientMixin<T> {
-  bool isStatusBar = true; //是否进行状态栏修改
-  StatusBarStyle statusBarStyle = StatusBarStyle.DARK_CONTENT; //状态栏字体颜色
-  Color statusBarColor = Colors.transparent; //状态栏颜色
+  SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle.dark;
+  Brightness appBarBrightness = Brightness.light;
   bool statusBarTranslucent = false; //是否浸入式
   bool isAppBar = true; //是否显示appbar
   Color bgColor = Colors.white; //背景颜色
@@ -71,7 +71,8 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
   //标准appbar 可重写自定义 标题为空则不显示
   Widget appBar(BuildContext context) {
     if (appBarTitle(context) == null || appBarTitle(context).isEmpty || !isAppBar) return null;
-    return JvtdAppBar.text(title: appBarTitle(context), backgroundColor: appBarColor, textTheme: TextTheme(title: appBarTextStyle), iconTheme: IconThemeData(color: appBarTextStyle.color));
+    return JvtdAppBar.text(
+        title: appBarTitle(context), backgroundColor: appBarColor, textTheme: TextTheme(title: appBarTextStyle), iconTheme: IconThemeData(color: appBarTextStyle.color), brightness: appBarBrightness);
   }
 
   Widget _buildBase(BuildContext context) {
@@ -94,7 +95,7 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
 
   //创建悬浮按钮
   Widget buildFloatingActionButton(BuildContext context) {
-    return Container(width: 0,height: 0);
+    return Container(width: 0, height: 0);
   }
 
   //创建空布局
@@ -124,8 +125,7 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
 
   @override
   Widget build(BuildContext context) {
-    FlutterStatusbarManager.setStyle(statusBarStyle);
-    FlutterStatusbarManager.setColor(statusBarColor);
+    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
     FlutterStatusbarManager.setTranslucent(statusBarTranslucent);
     return StoreBuilder<S>(builder: (context, store) {
       mStore = store;
@@ -147,7 +147,7 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
       return Future.value(true);
     } else {
       _clickTime = DateTime.now();
-      JvtdToast.showMessage(msg: exitAppTips(),context: context);
+      JvtdToast.showMessage(msg: exitAppTips(), context: context);
       return Future.value(false);
     }
   }
