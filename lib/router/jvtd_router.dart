@@ -16,7 +16,7 @@ class RouterDefine {
   });
 }
 
-typedef OnParamsCallBack = void Function(BuildContext context, Map<String, List<String>> params);
+typedef OnParamsCallBack = Widget Function(BuildContext context, Map<String, String> params);
 
 const String PARAMS_KEY = 'JVTDPARAMS';
 
@@ -32,10 +32,10 @@ class RouterHandler {
   /// 有参数路由处理（返回相关信息-自处理）
   ///
   /// decode 默认进行加密处理中文无法传输问题
-  static Handler params({@required HandlerFunc handlerFunc}) {
+  static Handler params({@required OnParamsCallBack handlerFunc}) {
     return Handler(handlerFunc: (BuildContext context,Map<String, List<String>> parameters){
       String paramsStr = parameters[PARAMS_KEY]?.first;
-      Map<String, List<String>> decodeParameters = {};
+      Map<String, String> decodeParameters = {};
       if(paramsStr != null && paramsStr.isNotEmpty){
         var list = List<int>();
         ///字符串解码
