@@ -33,17 +33,16 @@ class RouterHandler {
   ///
   /// decode 默认进行加密处理中文无法传输问题
   static Handler params({@required OnParamsCallBack handlerFunc}) {
-    return Handler(handlerFunc: (BuildContext context,Map<String, List<String>> parameters){
+    return Handler(handlerFunc: (BuildContext context, Map<String, List<String>> parameters) {
       String paramsStr = parameters[PARAMS_KEY]?.first;
       Map<String, String> decodeParameters = {};
-      if(paramsStr != null && paramsStr.isNotEmpty){
+      if (paramsStr != null && paramsStr.isNotEmpty) {
         var list = List<int>();
-        ///字符串解码
         jsonDecode(paramsStr).forEach(list.add);
-        final String value = Utf8Decoder().convert(list);
-        decodeParameters = json.decode(value);
+        String value = Utf8Decoder().convert(list);
+        decodeParameters = Map<String, String>.from(json.decode(value));
       }
-      return handlerFunc(context,decodeParameters);
+      return handlerFunc(context, decodeParameters);
     });
   }
 }
@@ -80,5 +79,5 @@ abstract class JvtdRoutes {
 String mapToRouteParams(Map<String, String> map) {
   String jsonString = json.encode(map);
   var jsons = jsonEncode(Utf8Encoder().convert(jsonString));
-  return "?"+PARAMS_KEY+"=$jsons";
+  return "?" + PARAMS_KEY + "=$jsons";
 }
