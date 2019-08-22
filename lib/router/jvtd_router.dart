@@ -1,7 +1,7 @@
 import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
-import '../utils/encode_decode_util.dart';
+import 'dart:convert';
 
 //路由定义类（简化定义方式）
 class RouterDefine {
@@ -18,6 +18,8 @@ class RouterDefine {
 
 typedef OnParamsCallBack = void Function(BuildContext context, Map<String, List<String>> params);
 
+const String PARAMS_KEY = 'JVTDPARAMS';
+
 /// 路由处理类 简化处理方式
 class RouterHandler {
   //标准无参数路由处理
@@ -30,15 +32,17 @@ class RouterHandler {
   /// 有参数路由处理（返回相关信息-自处理）
   ///
   /// decode 默认进行加密处理中文无法传输问题
-  static Handler params({@required HandlerFunc handlerFunc,bool decode = true}) {
-    if(!decode) return Handler(handlerFunc: handlerFunc);
+  static Handler params({@required HandlerFunc handlerFunc}) {
     return Handler(handlerFunc: (BuildContext context,Map<String, List<String>> parameters){
+      String paramsStr = parameters[PARAMS_KEY]?.first;
       Map<String, List<String>> decodeParameters = {};
-      parameters.forEach((key,value){
-        decodeParameters[key] = value.map((item){
-          return jvtdUtf8Decode(item);
-        }).toList();
-      });
+      if(paramsStr != null && paramsStr.isNotEmpty){
+        var list = List<int>();
+        ///字符串解码
+        jsonDecode(paramsStr).forEach(list.add);
+        final String value = Utf8Decoder().convert(list);
+        decodeParameters = json.decode(value);
+      }
       return handlerFunc(context,decodeParameters);
     });
   }
@@ -73,15 +77,8 @@ abstract class JvtdRoutes {
 /// 字典转路由参数
 ///
 /// encode 默认加密处理中文传输问题
-String mapToRouteParams(Map<String, String> map,{bool encode = true}) {
-  String paramsStr = '';
-  for (int i = 0; i < map.length; i++) {
-    if (i == 0) {
-      paramsStr += '?';
-    } else {
-      paramsStr += "&";
-    }
-    paramsStr = paramsStr + map.keys.elementAt(i) + '=' + jvtdUtf8Encode(map.values.elementAt(i));
-  }
-  return paramsStr;
+String mapToRouteParams(Map<String, String> map) {
+  String jsonString = json.encode(map);
+  var jsons = jsonEncode(Utf8Encoder().convert(jsonString));
+  return "?"+PARAMS_KEY+"=$jsons";
 }
