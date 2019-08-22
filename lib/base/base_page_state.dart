@@ -72,7 +72,18 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
   Widget appBar(BuildContext context) {
     if (appBarTitle(context) == null || appBarTitle(context).isEmpty || !isAppBar) return null;
     return JvtdAppBar.text(
-        title: appBarTitle(context), backgroundColor: appBarColor, textTheme: TextTheme(title: appBarTextStyle), iconTheme: IconThemeData(color: appBarTextStyle.color), brightness: appBarBrightness);
+      title: appBarTitle(context),
+      backgroundColor: appBarColor,
+      textTheme: TextTheme(title: appBarTextStyle),
+      iconTheme: IconThemeData(color: appBarTextStyle.color),
+      brightness: appBarBrightness,
+      actions: buildActions(context),
+    );
+  }
+
+  //创建actions
+  List<Widget> buildActions(BuildContext context) {
+    return [];
   }
 
   Widget _buildBase(BuildContext context) {
