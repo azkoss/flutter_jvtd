@@ -11,7 +11,9 @@ import '../widget/jvtd_app_bar.dart';
 
 /// 状态管理基础page
 abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> extends State<T> with AutomaticKeepAliveClientMixin<T> {
-  SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle.dark;
+  SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle.dark.copyWith(
+    statusBarColor: Colors.transparent,
+  );
   Brightness appBarBrightness = Brightness.light;
   bool statusBarTranslucent = false; //是否浸入式
   bool isAppBar = true; //是否显示appbar

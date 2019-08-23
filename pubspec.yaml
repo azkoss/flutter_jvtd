@@ -60,7 +60,7 @@ dependencies:
 
   # https://pub.dartlang.org/packages/fluro
   # 路由管理
-  fluro: ^1.5.0
+  fluro: ^1.5.1
 
   # https://pub.dartlang.org/packages/flutter_swiper
   # 无限滚动视图
