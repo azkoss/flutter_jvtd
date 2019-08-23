@@ -19,7 +19,7 @@ dependencies:
 
   flutter_jvtd_dialog:
     git:
-      url: 'https://github.com/q200892907/flutter_jvtd_dialog.git'
+      url: "https://github.com/q200892907/flutter_jvtd_dialog.git"
       ref: 0.0.1
 
   # The following adds the Cupertino Icons font to your application.
