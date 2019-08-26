@@ -91,6 +91,9 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
   Widget _buildBase(BuildContext context) {
     if (!_isInit) {
       _isInit = true;
+      print(appBarTitle(context) + "初始化");
+      SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+      FlutterStatusbarManager.setTranslucent(statusBarTranslucent);
       initData(context);
     }
     return Scaffold(
@@ -138,8 +141,6 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
-    FlutterStatusbarManager.setTranslucent(statusBarTranslucent);
     return StoreBuilder<S>(builder: (context, store) {
       mStore = store;
       return Localizations.override(
