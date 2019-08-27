@@ -13,7 +13,6 @@ export 'router/jvtd_router.dart';
 
 //第三方库
 export 'package:flutter_statusbar_manager/flutter_statusbar_manager.dart';
-export 'package:flutter_localizations/flutter_localizations.dart';
 export 'package:flutter_redux/flutter_redux.dart';
 export 'package:redux/redux.dart';
 export 'package:flutter_spinkit/flutter_spinkit.dart';
