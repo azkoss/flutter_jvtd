@@ -55,8 +55,21 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
     }
   }
 
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_isInit) {
+      _isInit = true;
+      initData(context);
+    }
+  }
+
   //初始化数据
-  void initData(BuildContext context) {}
+  void initData(BuildContext context) {
+    print(appBarTitle(context) + "初始化");
+    SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
+    FlutterStatusbarManager.setTranslucent(statusBarTranslucent);
+  }
 
   @protected
   Widget buildBody(BuildContext context);
@@ -89,13 +102,6 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
   }
 
   Widget _buildBase(BuildContext context) {
-    if (!_isInit) {
-      _isInit = true;
-      print(appBarTitle(context) + "初始化");
-      SystemChrome.setSystemUIOverlayStyle(systemUiOverlayStyle);
-      FlutterStatusbarManager.setTranslucent(statusBarTranslucent);
-      initData(context);
-    }
     return Scaffold(
       appBar: appBar(context),
       body: isShowEmpty
