@@ -13,6 +13,7 @@ abstract class BaseListViewState<M, T extends StatefulWidget> extends State<T> {
   bool isLoadMore = true; //是否有上拉加载
 
   bool autoRefresh = true; //第一次自动加载
+  bool _isInit = false; //首次初始化
 
   bool oldLoadMoreStatus; //老状态
 
@@ -30,16 +31,22 @@ abstract class BaseListViewState<M, T extends StatefulWidget> extends State<T> {
     oldLoadMoreStatus = isLoadMore;
     isLoadMore = false;
     _refreshController = new RefreshController();
-    if (autoRefresh) {
+    firstState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (!_isInit && autoRefresh) {
+      _isInit = true;
       onRefresh();
     }
-    firstState();
   }
 
   @override
   void dispose() {
     super.dispose();
-    if(_refreshController != null){
+    if (_refreshController != null) {
       _refreshController.dispose();
     }
   }
@@ -119,7 +126,8 @@ abstract class BaseListViewState<M, T extends StatefulWidget> extends State<T> {
       return headerWidgets().elementAt(position);
     } else if (position >= _getHeaderCount() + _getListCount()) {
       //尾布局
-      return footerWidgets().elementAt(position - (_getHeaderCount() + _getListCount()));
+      return footerWidgets()
+          .elementAt(position - (_getHeaderCount() + _getListCount()));
     } else {
       if (_isShowEmpty()) {
         return buildEmptyView();
@@ -141,15 +149,17 @@ abstract class BaseListViewState<M, T extends StatefulWidget> extends State<T> {
 
   Widget _buildSmartRefresher(BuildContext context) {
     return SmartRefresher(
-        controller: _refreshController,
-        enablePullDown: isRefresh,
-        enablePullUp: isLoadMore,
-        header: buildRefreshView(),
-        footer: buildLoadMoreView(),
-        child: _isShowEmpty() && !isEmptyAndHeaderFooter ? _buildScrollEmptyView() : _buildList(context),
-        onRefresh: onRefresh,
-        onLoading: loadMore,
-      );
+      controller: _refreshController,
+      enablePullDown: isRefresh,
+      enablePullUp: isLoadMore,
+      header: buildRefreshView(),
+      footer: buildLoadMoreView(),
+      child: _isShowEmpty() && !isEmptyAndHeaderFooter
+          ? _buildScrollEmptyView()
+          : _buildList(context),
+      onRefresh: onRefresh,
+      onLoading: loadMore,
+    );
   }
 
   @protected
@@ -205,9 +215,9 @@ abstract class BaseListViewState<M, T extends StatefulWidget> extends State<T> {
   }
 
   void _loadMoreFinish({bool end = false}) {
-    if(end){
+    if (end) {
       _refreshController.loadNoData();
-    }else{
+    } else {
       _refreshController.loadComplete();
     }
   }
