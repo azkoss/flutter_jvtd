@@ -103,7 +103,7 @@ class ProvincesUtil {
     return _instance;
   }
 
-  static const String CHINA_NAME = "assets/json/china.json";
+  static const String CHINA_NAME = "assets/china.json";
 
   static const String CHINA_LEVEL = "0";
   static const String PROVINCE_LEVEL = "1";
