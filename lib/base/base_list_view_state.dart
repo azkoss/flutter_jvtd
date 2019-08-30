@@ -39,9 +39,13 @@ abstract class BaseListViewState<M, T extends StatefulWidget> extends State<T> {
     super.didChangeDependencies();
     if (!_isInit && autoRefresh) {
       _isInit = true;
+      initData(context);
       onRefresh();
     }
   }
+
+  //首次初始化数据
+  void initData(BuildContext context) {}
 
   @override
   void dispose() {
@@ -126,8 +130,7 @@ abstract class BaseListViewState<M, T extends StatefulWidget> extends State<T> {
       return headerWidgets().elementAt(position);
     } else if (position >= _getHeaderCount() + _getListCount()) {
       //尾布局
-      return footerWidgets()
-          .elementAt(position - (_getHeaderCount() + _getListCount()));
+      return footerWidgets().elementAt(position - (_getHeaderCount() + _getListCount()));
     } else {
       if (_isShowEmpty()) {
         return buildEmptyView();
@@ -154,9 +157,7 @@ abstract class BaseListViewState<M, T extends StatefulWidget> extends State<T> {
       enablePullUp: isLoadMore,
       header: buildRefreshView(),
       footer: buildLoadMoreView(),
-      child: _isShowEmpty() && !isEmptyAndHeaderFooter
-          ? _buildScrollEmptyView()
-          : _buildList(context),
+      child: _isShowEmpty() && !isEmptyAndHeaderFooter ? _buildScrollEmptyView() : _buildList(context),
       onRefresh: onRefresh,
       onLoading: loadMore,
     );
