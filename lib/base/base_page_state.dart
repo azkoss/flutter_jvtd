@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_jvtd/flutter_jvtd.dart';
 import 'package:flutter_statusbar_manager/flutter_statusbar_manager.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter/services.dart';
@@ -22,6 +23,8 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
   TextStyle appBarTextStyle = TextStyle(color: Colors.black, fontSize: 18); //appbar字体样式
   JvtdLoadingDialog _loadingDialog;
 
+  Color loadingBgColor = Colors.black12;//loading整体背景颜色
+
   bool isDoubleClick = false; //是否双击返回桌面
   DateTime _clickTime; //返回键点击时间
 
@@ -38,9 +41,10 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
 
   void showLoading() {
     if (_loadingDialog == null) {
-      showDialog(
+      showJvtdDialog(
           context: context,
           barrierDismissible: false,
+          barrierColor: loadingBgColor,
           builder: (context) {
             _loadingDialog = JvtdLoadingDialog();
             return _loadingDialog;

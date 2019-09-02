@@ -8,7 +8,7 @@ class JvtdLoadingDialog extends BaseDialog {
   @override
   Widget buildBody(BuildContext context) {
     return Container(
-      constraints: BoxConstraints.expand(width: getWidthFactor(),height: getWidthFactor()),
+      constraints: BoxConstraints.expand(width: getWidthFactor(), height: getWidthFactor()),
       decoration: BoxDecoration(
         color: Colors.black54,
         borderRadius: BorderRadius.circular(4),
@@ -24,6 +24,7 @@ class JvtdLoadingDialog extends BaseDialog {
   double getWidthFactor() {
     return 96;
   }
+
   @override
   bool getCancelOutside() => false;
 
