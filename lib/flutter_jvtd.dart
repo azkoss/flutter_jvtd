@@ -10,6 +10,8 @@ export 'utils/utils.dart';
 export 'redux/redux.dart';
 export 'app/application.dart';
 export 'router/jvtd_router.dart';
+export 'router/jvtd_navigator.dart';
+
 
 //第三方库
 export 'package:flutter_statusbar_manager/flutter_statusbar_manager.dart';

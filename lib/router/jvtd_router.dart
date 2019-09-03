@@ -2,7 +2,6 @@ import 'package:fluro/fluro.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:convert';
-export 'jvtd_navigator.dart';
 
 //路由定义类（简化定义方式）
 class RouterDefine {
