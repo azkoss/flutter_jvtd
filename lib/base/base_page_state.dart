@@ -23,7 +23,7 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
   TextStyle appBarTextStyle = TextStyle(color: Colors.black, fontSize: 18); //appbar字体样式
   JvtdLoadingDialog _loadingDialog;
 
-  Color loadingBgColor = Colors.black12;//loading整体背景颜色
+  Color loadingBgColor = Colors.black12; //loading整体背景颜色
 
   bool isDoubleClick = false; //是否双击返回桌面
   DateTime _clickTime; //返回键点击时间
@@ -184,5 +184,11 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
   //关闭键盘
   void closeKeyboard() {
     FocusScope.of(context).requestFocus(FocusNode());
+  }
+
+  @override
+  void setState(fn) {
+    if (!mounted) return;
+    super.setState(fn);
   }
 }

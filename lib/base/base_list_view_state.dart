@@ -222,4 +222,10 @@ abstract class BaseListViewState<M, T extends StatefulWidget> extends State<T> {
       _refreshController.loadComplete();
     }
   }
+
+  @override
+  void setState(fn) {
+    if (!mounted) return;
+    super.setState(fn);
+  }
 }

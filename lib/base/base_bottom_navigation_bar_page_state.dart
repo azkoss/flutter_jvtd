@@ -114,4 +114,10 @@ abstract class BaseBottomNavigationBarPageState<T extends StatefulWidget, S exte
     pageController?.dispose();
     super.dispose();
   }
+
+  @override
+  void setState(fn) {
+    if (!mounted) return;
+    super.setState(fn);
+  }
 }
