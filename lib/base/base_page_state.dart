@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_jvtd/flutter_jvtd.dart';
 import 'package:flutter_statusbar_manager/flutter_statusbar_manager.dart';
@@ -22,6 +24,7 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
   Color appBarColor = Colors.white; //appbar背景颜色
   TextStyle appBarTextStyle = TextStyle(color: Colors.black, fontSize: 18); //appbar字体样式
   JvtdLoadingDialog _loadingDialog;
+  int loadingTime = 20;//loading等待时间
 
   Color loadingBgColor = Colors.black12; //loading整体背景颜色
 
@@ -49,6 +52,9 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
             _loadingDialog = JvtdLoadingDialog();
             return _loadingDialog;
           });
+      Timer(Duration(seconds: loadingTime),(){
+        hideLoading();
+      });
     }
   }
 
