@@ -13,7 +13,7 @@ import '../base/base_empty_view.dart';
 import '../widget/jvtd_app_bar.dart';
 
 /// 状态管理基础page
-abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> extends State<T> with AutomaticKeepAliveClientMixin<T> {
+abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> extends State<T> with AutomaticKeepAliveClientMixin<T>, RouteAware {
   SystemUiOverlayStyle systemUiOverlayStyle = SystemUiOverlayStyle.dark.copyWith(
     statusBarColor: Colors.transparent,
   );
@@ -24,12 +24,14 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
   Color appBarColor = Colors.white; //appbar背景颜色
   TextStyle appBarTextStyle = TextStyle(color: Colors.black, fontSize: 18); //appbar字体样式
   JvtdLoadingDialog _loadingDialog;
-  int loadingTime = 20;//loading等待时间
+  int loadingTime = 20; //loading等待时间
 
   Color loadingBgColor = Colors.black12; //loading整体背景颜色
 
   bool isDoubleClick = false; //是否双击返回桌面
   DateTime _clickTime; //返回键点击时间
+
+  bool pageObserver = false;//监听界面跳转逻辑
 
   bool _isInit = false;
 
@@ -52,7 +54,7 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
             _loadingDialog = JvtdLoadingDialog();
             return _loadingDialog;
           });
-      Timer(Duration(seconds: loadingTime),(){
+      Timer(Duration(seconds: loadingTime), () {
         hideLoading();
       });
     }
@@ -68,10 +70,21 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    if (pageObserver) {
+      Application.routeObserver.subscribe(this, ModalRoute.of(context));
+    }
     if (!_isInit) {
       _isInit = true;
       initData(context);
     }
+  }
+
+  @override
+  void dispose() {
+    if (pageObserver) {
+      Application.routeObserver.unsubscribe(this);
+    }
+    super.dispose();
   }
 
   //初始化数据
