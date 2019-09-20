@@ -31,7 +31,8 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
   bool isDoubleClick = false; //是否双击返回桌面
   DateTime _clickTime; //返回键点击时间
 
-  bool pageObserver = false;//监听界面跳转逻辑
+  bool pageObserver = false; //监听界面跳转逻辑
+  bool _isPageObserver = false;//是否已监听
 
   bool _isInit = false;
 
@@ -71,6 +72,8 @@ abstract class BasePageState<T extends StatefulWidget, S extends JvtdState> exte
   void didChangeDependencies() {
     super.didChangeDependencies();
     if (pageObserver) {
+      if(_isPageObserver) return;
+      _isPageObserver = true;
       Application.routeObserver.subscribe(this, ModalRoute.of(context));
     }
     if (!_isInit) {
